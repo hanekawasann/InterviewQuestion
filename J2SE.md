@@ -100,6 +100,10 @@ Byte、Short、Integer、Long、Character、Float、Double、Boolean
 
 不可以，因为String类有final修饰符，而final不能被继承的，实现细节不允许改变。
 
+**String对象的intern()**
+
+intern()方法会首先从常量池中查找是否存在该常量值，如果常量池中不存在则现在常量池中创建，如果已经存在则直接返回。
+
 **String，StringBuffer，StringBuilder的区别**
 String是字符串常量，创建之后即不能更改，是不可变对象。
 StringBuffer和StringBuilde都是字符串变量，继承和实现同一个接口（CharSequence）和类（AbstractStringBuilder），使用方法基本一致。
