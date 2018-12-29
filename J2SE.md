@@ -106,6 +106,10 @@ StringBuffer和StringBuilde都是字符串变量，继承和实现同一个接�
 StringBuffer是jdk1.0引入、线程安全，绝大多数方法都进行了synchronized同步处理。其toString方法会进行对象缓存，以减少元素的复制开销。
 StringBuilder是jdk1.5引入、非线程安全。比StringBuffer效率高。其toString方法会直接返回一个新String对象。
 
+**String对象的intern()**
+
+intern()方法会首先从常量池中查找是否存在该常量值，如果常量池中不存在则现在常量池中创建，如果已经存在则直接返回。
+
 ### 集合
 
 **List、Set和Map的区别**
