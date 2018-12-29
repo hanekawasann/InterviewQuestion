@@ -41,7 +41,7 @@
 AUTO_INCREMENT：MyISAM可以和其他字段一起建立联合索引。InnoDB必须包含只有该字段的索引。
 外键：MyISAM不支持外键。InnoDB支持外键。
 锁机制：MyISAM是表级锁。InnoDB是行级锁。
-事务：MyISAM支持事务。InnoDB支持事务。
+事务：MyISAM不支持事务。InnoDB支持事务。
 表行数：MyISAM缓存表行数。InnoDB即时计算表行数。
 全文索引：MyISAM支持 FULLTEXT类型的全文索引。InnoDB不支持FULLTEXT类型的全文索引，但是InnoDB可以使用sphinx插件支持全文索引，并且效果更好。
 存储结构：每个MyISAM在磁盘上存储成三个文件。InnoDB的所有表都保存在同一个数据文件中。

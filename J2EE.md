@@ -33,7 +33,7 @@ http默认端口号80，https默认端口号443。
 **Servlet、Filter和Listener的区别**
 
 Servlet职责是接受请求、处理请求、响应数据。
-Filter职责是对请求或响应做一些通用的处理，所以一个Filter可以拦截多个请求。
+Filter职责是对请求或响应做一些通用的处理。
 Listener职责是监听Application、Session、Request的事件。
 
 **什么是Servlet**
@@ -78,7 +78,7 @@ Cookie通过在客户端记录信息确定用户身份，Session通过在服务�
 ```xml
 <web-app>
     <session-config>
-        <session-timeout>15</session-timeout>
+        <session-timeout>30</session-timeout>
     </session-config>
 </web-app>
 ```
@@ -99,20 +99,20 @@ session令牌：每次访问页面为表单分配唯一的随机标识号，同�
 
 ```java
 public static String getIp(HttpServletRequest request) {
-           String ip = request.getHeader("X-Forwarded-For");
-           if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
-               //多次反向代理后会有多个ip值，第一个ip才是真实ip
-               int index = ip.indexOf(",");
-               if(index != -1){
-                   return ip.substring(0,index);
-               }else{
-                   return ip;
-               }
-           }
-           ip = request.getHeader("X-Real-IP");
-           if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
-               return ip;
-           }
-           return request.getRemoteAddr();
-       }
+    String ip = request.getHeader("X-Forwarded-For");
+    if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
+        //多次反向代理后会有多个ip值，第一个ip才是真实ip
+        int index = ip.indexOf(",");
+        if(index != -1){
+            return ip.substring(0,index);
+        }else{
+            return ip;
+        }
+    }
+    ip = request.getHeader("X-Real-IP");
+    if(StringUtils.isNotEmpty(ip) && !"unKnown".equalsIgnoreCase(ip)){
+        return ip;
+    }
+    return request.getRemoteAddr();
+}
 ```

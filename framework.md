@@ -4,27 +4,27 @@
 
 **Spring框架中的核心思想**
 
-IOC控制反转，DI依赖注入，AOP面向切面
+IOC（Inversion of Control）控制反转，AOP（Aspect Oriented Program）面向切面
+> DI（Dependency Injection）依赖注入是IoC的一种方式。
 
 **Spring Bean的作用域**
 
-Singleton（单例）、Prototype（每次从从其中获取bean）、Request（每次请求）、Session（每一个Session）
+Singleton（单例）、Prototype（每次从上下文获取bean）、Request（每次请求）、Session（每一个Session）
 
 **Spring事务管理力度的级别，如何管理事务**
 
-方法级别，可分为编程式事务和声明式事务，提供了七种事务传播行为
+方法级别（Struts2是类级别），可分为编程式事务和声明式事务，提供了七种事务传播行为
 PROPAGATION_REQUIRED（默认）：有则加入，没有则创建。
 PROPAGATION_SUPPORTS：有则加入，没有则执行。
-PROPAGATION_MANDATORY：必须已经存在事务并加入，否则抛出异常
+PROPAGATION_NESTED（Spring特有）：有则嵌套子事务，没有则创建
 PROPAGATION_REQUIRES_NEW：始终创建新事务
+PROPAGATION_MANDATORY：必须已经存在事务并加入，否则抛出异常
 PROPAGATION_NOT_SUPPORTED：不支持事务，有则挂起
 PROPAGATION_NEVER：永远不需要事务，有则抛出异常
-PROPAGATION_NESTED（Spring特有）：有则嵌套子事务，没有则创建
-> Struts2是类级别
 
 **Spring Bean的声明周期**
 
-实例化、填充属性、检查Aware接口（设置一些资源：name、factory、applicationContext）、检查BeanPostProcessor接口（传入所有bean）、检查InitializingBean接口（调整bean内部状态）、可用、DisposableBean接口销毁方法、自定义销毁方法。
+实例化、填充属性、Aware接口（设置资源：name、factory、applicationContext）、BeanPostProcessor接口（传入所有bean）、InitializingBean接口（调整bean内部状态）、可用、DisposableBean接口（销毁）、自定义销毁方法。
 
 **Spring MVC生命周期**
 
@@ -52,8 +52,8 @@ native（代理主键）：根据底层数据库自动选择identity、sequence�
 **Hibernate对象状态**
 
 临时状态：在数据库中没有对应数据，没有在Hibernate的缓存管理之内（new）
+游离状态：在数据库中有对应数据，没有在Hibernate的缓存管理之内
 持久化状态：在数据库中有对应数据，在Hibernate的缓存管理之中（get、load）
-游离状态：在数据库中没有对应数据，没有在Hibernate的缓存管理之内
 
 **Hibernate对象状态转换**
 
@@ -71,7 +71,7 @@ load方法使用延迟加载的机制来加载这个对象，而get方法会直�
 
 **Hibernate缓存**
 
-一级缓存是Session缓存，即事务级别的缓存。Session缓存是必须的，不允许而且事实上也无法卸除。在Session级缓存中，持久化类的每个实例都具有唯一的OID。
+一级缓存是Session缓存，即事务级别的缓存。Session缓存是必须的，不允许而且事实上也无法关闭。在Session级缓存中，持久化类的每个实例都具有唯一的OID。
 二级缓存是SessionFactory缓存，即应用级别的缓存，需要采用适当的并发访问策略。
 三级缓存是查询缓存。它主要是针对普通属性结果集的缓存， 而对于实体对象的结果集只缓存id。
 
@@ -89,13 +89,13 @@ resultMap可以对列名和pojo属性名之间作一个映射关系，是更加�
 
 **parameterType和parameterMap的区别**
 
-对应resultType和resultMap
+对应resultType和resultMap。
 
 ## 其他
 
 **ORM的理解**
 
-ORM（Object Relation Mapping）被称为对象关系映射，其中O指的就是java对象，R指的就是关系型数据库，M指的是java对象和关系型数据库之间的映射关系。ORM框架有Hibernate、Mybatis和Ibatis.
+ORM（Object Relation Mapping）被称为对象关系映射，其中O指的就是java对象，R指的就是关系型数据库，M指的是Java对象和关系型数据库之间的映射关系。ORM框架有Hibernate、Mybatis和Ibatis。
 
 **Struts2和SpringMVC的区别**
 
