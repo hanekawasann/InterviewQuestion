@@ -20,7 +20,9 @@ URL编码通常也被称为百分号编码，使用%加上两位的字符“0123
 
 **GET与POST**
 
-GET和POST是http协议的两种方法，GET只有一个流，参数附加在url后，大小个数有严格限制且只能是字符串，安全性较低。post的参数是通过另外的流传递的，可以很大，也可以传递二进制数据，安全性较高。
+GET和POST是http协议的两种方法。
+GET只有一个流，参数附加在url后，大小个数有严格限制且只能是字符串，安全性较低。
+POST的参数是通过另外的流传递的，可以很大，也可以传递二进制数据，安全性较高。
 
 **HTTPS和HTTP的区别**
 
@@ -59,7 +61,7 @@ redirect表示重定向，实际是两次HTTP请求，服务器端在响应第�
 
 **什么是JSP**
 
-JSP全名为Java Server Pages（Java服务器页面），它在传统的HTML中插入Java代码，其根本是一个简化的Servlet设计。
+JSP全名为Java Server Pages（Java服务器页面），它在传统的HTML中插入Java代码，其根本是一个简化的Servlet。
 
 **JSP九大隐式对象和四大作用域**
 

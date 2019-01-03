@@ -12,7 +12,8 @@ JDK是java的开发工具包，里面包含了各种类库和工具。JRE是java
 finalize()方法是Object类的一个protected方法，它是在对象被垃圾回收之前由Java虚拟机来调用的。
 
 **`&&`和`&`的区别，`||`和`|`的区别**
-
+&->与
+|->或
 &&和||是逻辑运算符，&和|是按位运算符。
 &&当两侧都为真输出真，||当两侧中有一侧为真输出真。
 &当两侧都为1是输出1，|当两侧中有一侧为1输出1。
@@ -96,9 +97,9 @@ Byte、Short、Integer、Long、Character、Float、Double、Boolean
 基本数据类型和它对应的封装类型之间可以相互转换，从基本数据类型到封装类型叫做装箱，从封装类型到基本数据类型叫拆箱，自动拆装箱是jdk5.0提供的新特特性。
 当我们要调用的方法中存在重载的时候，即基本类型数据作为唯一参数的方法与该基本类型包装类作为唯一参数的方法重载，这时候自动装箱不起作用。
 
-**String能被继承吗？为什么？**
+**String能被继承吗？**
 
-不可以，因为String类有final修饰符，而final不能被继承的，实现细节不允许改变。
+不可以，String类有final修饰符，而final不能被继承的，实现细节不允许改变。
 
 **String对象的intern()**
 
@@ -122,7 +123,7 @@ Map无序不可重复，保存键值对。
 
 **Iterator和ListIterator的区别**
 
-ListIterator支持添加（add）、删除、修改（set）对象，而Iterator只支持删除对象。
+ListIterator支持添加（add）、修改（set）、删除对象，而Iterator只支持删除对象。
 ListIterator支持向后遍历（hasNext、next）和向前遍历（hasPrevious、previous），而Iterator只支持向后遍历。
 ListIterator可以定位当前的索引位置（nextIndex、previousIndex），而Iterator不支持。
 
@@ -141,7 +142,7 @@ CopyOnWriteArrayList是一个并发容器，而不是同步容器。每次调用
 
 **HashSet和TreeSet的区别**
 
-HashSet基于哈希表实现，是无序的；TreeSet基于二叉树实现，是有序的。
+HashSet基于哈希表实现，是无序的；TreeSet基于二叉树实现，支持排序，默认升序排序。
 HashSet允许放入一个null，TreeSet不允许放入null。
 它们都是不重复的集合，HashSet依靠hashCode和equals区分重复数据，而TreeSet依靠Comparable来区分重复数据。
 
@@ -215,7 +216,8 @@ public int read(byte b[], int off, int len) throws IOException;
 
 **线程间通信方式**
 
-内置锁、volatile、显示锁、原子变量、条件队列
+内置锁、volatile、显示锁、条件队列
+原子变量、阻塞队列
 
 **创建线程有几种不同的方式？哪一种更好？**
 
@@ -223,7 +225,7 @@ public int read(byte b[], int off, int len) throws IOException;
 Java不支持多继承，所以实现Runnable接口更加灵活。线程池也是非常高效的，很容易实现和使用。
 
 **线程的状态**
-
+共六种状态。
 NEW： 新建状态，线程对象已经创建，但尚未启动。
 RUNNABLE：就绪状态，可运行状态，调用了线程的start方法，已经在java虚拟机中执行，等待获取操作系统资源如CPU，操作系统调度运行。
 BLOCKED：堵塞状态。线程等待锁的状态，等待获取锁进入同步块/方法或调用wait后重新进入需要竞争锁。
@@ -241,8 +243,8 @@ WAITING是等待，该状态下等待唤醒之后进入BLOCKED。
 
 它们分别来自于Thread类和Obejct类。
 sleep表示休眠，当前线程释放CPU控制权，但不释放锁，在指定时间后自动醒来。
-wait表示等待，当前线程释放CPU控制权，也释放锁，可以设置为直到其他线程唤醒该线程之前都不会醒来。
-> 条件队列和内置锁在一块使用的
+wait表示等待，当前线程释放CPU控制权，也释放锁，通过参数可以设置直到其他线程唤醒该线程之前都不会醒来。
+> 条件队列一定锁在一起使用，所以肯定会获得锁
 
 **如何确保N个线程可以访问N个资源同时又不导致线程死锁？**
 

@@ -5,7 +5,7 @@
 **Spring框架中的核心思想**
 
 IOC（Inversion of Control）控制反转，AOP（Aspect Oriented Program）面向切面
-> DI（Dependency Injection）依赖注入是IoC的一种方式。
+> DI（Dependency Injection）依赖注入是IOC的一种方式。
 
 **Spring Bean的作用域**
 
